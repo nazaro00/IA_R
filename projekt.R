@@ -1,6 +1,7 @@
 install.packages("dplyr")
 install.packages("tidyverse")
 install.packages("quadprog")
+install.packages("psych")
 
 library(dplyr)
 library(tidyverse)
@@ -20,11 +21,40 @@ data_log <- data.frame(Date = data$Date[-1],
                       NERD = diff(log(data$NERD)),
                       XRP = diff(log(data$XRP)))
 
+# Descriptive statistics – need to transpond and create a table
+library(psych)
+describe(data_log[,-1])
+
+
 #Variables for all calculations
 Cocoa <- data_log$Cocoa
 Allegro <- data_log$Allegro
 NERD <- data_log$NERD
 XRP <- data_log$XRP
+
+# Plot of Cocoa log return rates
+ggplot(data_log, aes(Date, Cocoa)) + 
+  geom_line(color = "chocolate4", linewidth = 1.2) + 
+  scale_y_continuous(labels = scales::percent) +
+  theme_light()
+
+# Plot of Allegro log return rates
+ggplot(data_log, aes(Date, Allegro)) + 
+  geom_line(color = "darkorange", linewidth = 1.2) + 
+  scale_y_continuous(labels = scales::percent) +
+  theme_light()
+
+# Plot of NERD log return rates
+ggplot(data_log, aes(Date, NERD)) + 
+  geom_line(color = "darkorchid", linewidth = 1.2) + 
+  scale_y_continuous(labels = scales::percent) +
+  theme_light()
+
+# Plot of XRP log return rates
+ggplot(data_log, aes(Date, XRP)) + 
+  geom_line(color = "red3", linewidth = 1.2) + 
+  scale_y_continuous(labels = scales::percent) +
+  theme_light()
 
 weights4inv <- read.table("weights4inv.txt",dec=",", header=TRUE, quote="\"",stringsAsFactors=FALSE)
 w1 <- weights4inv$W1
