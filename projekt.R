@@ -36,25 +36,29 @@ XRP <- data_log$XRP
 ggplot(data_log, aes(Date, Cocoa)) + 
   geom_line(color = "chocolate4", linewidth = 1.2) + 
   scale_y_continuous(labels = scales::percent) +
-  theme_light()
+  theme_light() +
+  ggtitle("Wykres logarytmicznych stóp zwrotu - kakao")
 
 # Plot of Allegro log return rates
 ggplot(data_log, aes(Date, Allegro)) + 
   geom_line(color = "darkorange", linewidth = 1.2) + 
   scale_y_continuous(labels = scales::percent) +
-  theme_light()
+  theme_light() +
+  ggtitle("Wykres logarytmicznych stóp zwrotu - Allegro")
 
 # Plot of NERD log return rates
 ggplot(data_log, aes(Date, NERD)) + 
   geom_line(color = "darkorchid", linewidth = 1.2) + 
-  scale_y_continuous(labels = scales::percent) +
-  theme_light()
+  scale_y_continuous(labels = scales::percent) + 
+  theme_light() +
+  ggtitle("Wykres logarytmicznych stóp zwrotu - Roundhill Video Games")
 
 # Plot of XRP log return rates
 ggplot(data_log, aes(Date, XRP)) + 
   geom_line(color = "red3", linewidth = 1.2) + 
   scale_y_continuous(labels = scales::percent) +
-  theme_light()
+  theme_light() +
+  ggtitle("Wykres logarytmicznych stóp zwrotu - XRP")
 
 weights4inv <- read.table("weights4inv.txt",dec=",", header=TRUE, quote="\"",stringsAsFactors=FALSE)
 w1 <- weights4inv$W1
