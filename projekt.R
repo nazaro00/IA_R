@@ -87,6 +87,7 @@ corr34 <- cor(NERD, XRP)
 
 # Calculate covariation matrix
 cov_matrix <- cov(data_log[,-1]) # weak covariation indicates little to no correlation between the assets, great diversification
+print(cov_matrix)
 
 # Function for minimum risk portfolio based on expected returns and covariance matrix
 optimize_portfolio <- function(expected_returns, cov_matrix) {
